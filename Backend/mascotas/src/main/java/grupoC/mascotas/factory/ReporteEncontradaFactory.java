@@ -2,10 +2,13 @@ package grupoC.mascotas.factory;
 
 import java.time.LocalDateTime;
 
+import org.springframework.stereotype.Component;
+
 import grupoC.mascotas.dto.ReporteRequestDTO;
 import grupoC.mascotas.model.Estado;
 import grupoC.mascotas.model.Reporte;
 
+@Component
 public class ReporteEncontradaFactory implements ReporteFactoryStrategy {
 
     @Override
