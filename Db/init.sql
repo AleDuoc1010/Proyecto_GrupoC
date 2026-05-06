@@ -1,7 +1,7 @@
 -- Crear las bases de datos para cada microservicio
 CREATE DATABASE IF NOT EXISTS usuariosdb;
 CREATE DATABASE IF NOT EXISTS mascotasdb;
-CREATE DATABASE IF NOT EXISTS geodb;
+CREATE DATABASE IF NOT EXISTS geolocalizaciondb;
 
 -- Otorgar permisos al usuario root para que los microservicios puedan conectarse (opcional según configuración)
 GRANT ALL PRIVILEGES ON usuariosdb.* TO 'root'@'%';

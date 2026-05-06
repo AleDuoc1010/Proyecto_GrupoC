@@ -57,5 +57,23 @@ services:
     volumes:
       - ./uploads/imagenes:/app/uploads/imagenes # Montamos el código para desarrollo en caliente
 
+# 4. Microservicio Geolocalización (¡NUEVO!)
+  geolocalizacion-api:
+    build:
+      context: ./Backend/geolocalizacion # Ruta a la carpeta de este microservicio
+    container_name: api_geolocalizacion
+    ports:
+      - "8082:8082"
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+    environment:
+      - DB_HOST=mysql-db
+      - DB_PORT=3306
+      - DB_NAME=geolocalizaciondb
+      - DB_USER=root
+      - DB_PASSWORD=stefy
+      - JWT_SECRET_KEY=UHJveWVjdG9HcnVwb0NTYW5vc1lTYWx2b3NTZWNyZXRLZXkyMDI2ISE= # <- ¡AÑADIR ESTO!
+      
 volumes:
   mysql_data:
