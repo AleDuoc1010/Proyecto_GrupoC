@@ -1,10 +1,9 @@
-package grupoC.geolocalizacion.config;
+package grupoC.motor_coincidencias.config;
 
 import java.util.List;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -14,7 +13,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import grupoC.geolocalizacion.security.JwtAuthenticationFilter;
+import grupoC.motor_coincidencias.security.JwtAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -34,14 +33,8 @@ public class SecurityConfig {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
                 // Cualquier persona visitante puede ver el mapa (marcadores ofuscados)
-                .requestMatchers(HttpMethod.GET, "/api/geolocalizacion/marcadores/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/geolocalizacion/marcadores").permitAll()
-
-                .requestMatchers(HttpMethod.GET, "/api/geolocalizacion/reporte/**").permitAll()
-                
-                // Solo usuarios registrados/logueados pueden crear un marcador
-                .requestMatchers(HttpMethod.POST, "/api/geolocalizacion/marcadores").authenticated()
-                
+                .requestMatchers("/coincidencias/**").authenticated()
+                                
                 // Swagger o rutas de error permitidas
                 .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/error").permitAll()
                 
@@ -64,5 +57,4 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
-
 }
