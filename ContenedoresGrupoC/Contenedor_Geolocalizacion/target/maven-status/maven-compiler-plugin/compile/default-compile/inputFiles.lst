@@ -1,0 +1,11 @@
+C:\Users\ale\Desktop\Ingeniería\FullStack 3\Proyecto_GrupoC\Backend\geolocalizacion\src\main\java\grupoC\geolocalizacion\config\SecurityConfig.java
+C:\Users\ale\Desktop\Ingeniería\FullStack 3\Proyecto_GrupoC\Backend\geolocalizacion\src\main\java\grupoC\geolocalizacion\controller\MarcadorEspacialController.java
+C:\Users\ale\Desktop\Ingeniería\FullStack 3\Proyecto_GrupoC\Backend\geolocalizacion\src\main\java\grupoC\geolocalizacion\dto\MarcadorRequestDTO.java
+C:\Users\ale\Desktop\Ingeniería\FullStack 3\Proyecto_GrupoC\Backend\geolocalizacion\src\main\java\grupoC\geolocalizacion\dto\MarcadorResponseDTO.java
+C:\Users\ale\Desktop\Ingeniería\FullStack 3\Proyecto_GrupoC\Backend\geolocalizacion\src\main\java\grupoC\geolocalizacion\GeolocalizacionApplication.java
+C:\Users\ale\Desktop\Ingeniería\FullStack 3\Proyecto_GrupoC\Backend\geolocalizacion\src\main\java\grupoC\geolocalizacion\model\MarcadorEspacial.java
+C:\Users\ale\Desktop\Ingeniería\FullStack 3\Proyecto_GrupoC\Backend\geolocalizacion\src\main\java\grupoC\geolocalizacion\repository\MarcadorEspacialRepository.java
+C:\Users\ale\Desktop\Ingeniería\FullStack 3\Proyecto_GrupoC\Backend\geolocalizacion\src\main\java\grupoC\geolocalizacion\security\JwtAuthenticationFilter.java
+C:\Users\ale\Desktop\Ingeniería\FullStack 3\Proyecto_GrupoC\Backend\geolocalizacion\src\main\java\grupoC\geolocalizacion\security\JwtTokenProvider.java
+C:\Users\ale\Desktop\Ingeniería\FullStack 3\Proyecto_GrupoC\Backend\geolocalizacion\src\main\java\grupoC\geolocalizacion\service\MarcadorEspacialService.java
+C:\Users\ale\Desktop\Ingeniería\FullStack 3\Proyecto_GrupoC\Backend\geolocalizacion\src\main\java\grupoC\geolocalizacion\util\OfuscacionUbicacionUtil.java
