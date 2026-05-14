@@ -16,20 +16,23 @@ import { RouterLink } from '@angular/router';
               <h2 class="fw-bold" style="color: var(--pet-brown);">Registrarme</h2>
               <p class="text-muted">Crea tu cuenta para reportar mascotas y recibir alertas.</p>
             </div>
-            <form (ngSubmit)="onSubmit()">
+            <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
               <div class="mb-3">
                 <label class="form-label">Nombre completo</label>
-                <input type="text" class="form-control rounded-pill" [(ngModel)]="user.name" name="name" placeholder="Tu nombre completo" required />
+                <input type="text" class="form-control rounded-pill" [(ngModel)]="user.name" name="name" #name="ngModel" pattern="[a-zA-Z\s]+" placeholder="Tu nombre completo" required />
+                <div *ngIf="name.invalid && name.touched" class="text-danger small mt-1">El nombre solo puede contener letras y espacios.</div>
               </div>
               <div class="mb-3">
                 <label class="form-label">Correo electrónico</label>
-                <input type="email" class="form-control rounded-pill" [(ngModel)]="user.email" name="email" placeholder="correo@ejemplo.com" required />
+                <input type="email" class="form-control rounded-pill" [(ngModel)]="user.email" name="email" #email="ngModel" placeholder="correo@ejemplo.com" required email />
+                <div *ngIf="email.invalid && email.touched" class="text-danger small mt-1">Ingresa un correo electrónico válido.</div>
               </div>
               <div class="mb-3">
                 <label class="form-label">Contraseña</label>
-                <input type="password" class="form-control rounded-pill" [(ngModel)]="user.password" name="password" placeholder="Crea una contraseña" required />
+                <input type="password" class="form-control rounded-pill" [(ngModel)]="user.password" name="password" #password="ngModel" placeholder="Crea una contraseña" required minlength="6" />
+                <div *ngIf="password.invalid && password.touched" class="text-danger small mt-1">La contraseña debe tener al menos 6 caracteres.</div>
               </div>
-              <button type="submit" class="btn btn-pet w-100">Crear cuenta</button>
+              <button type="submit" class="btn btn-pet w-100" [disabled]="registerForm.invalid">Crear cuenta</button>
             </form>
             <div class="text-center mt-3">
               <a routerLink="/" style="color: var(--pet-brown);">Volver al inicio</a>
@@ -62,7 +65,9 @@ import { RouterLink } from '@angular/router';
 export class RegisterComponent {
   user = { name: '', email: '', password: '' };
 
-  onSubmit() {
-    console.log('Registrar cuenta', this.user);
+  onSubmit(form: any) {
+    if (form.valid) {
+      console.log('Registrar cuenta', this.user);
+    }
   }
 }
