@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -55,10 +56,30 @@ import { RouterLink } from '@angular/router';
 })
 export class LoginComponent {
   credentials = { email: '', password: '' };
+  errorMessage = '';
+  isLoading = false;
+
+  constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit(form: any) {
     if (form.valid) {
-      console.log('Iniciar sesión con', this.credentials);
+      this.isLoading = true;
+      this.errorMessage = '';
+      
+      this.authService.login(this.credentials).subscribe({
+        next: (response: any) => {
+          if(response && response.token) {
+            localStorage.setItem('token', response.token);
+          }
+          this.isLoading = false;
+          this.router.navigate(['/']); 
+        },
+        error: (error) => {
+          console.error('Error de login', error);
+          this.errorMessage = 'Credenciales incorrectas o error de conexión.';
+          this.isLoading = false;
+        }
+      });
     }
   }
 }

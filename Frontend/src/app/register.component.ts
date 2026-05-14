@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -64,10 +65,28 @@ import { RouterLink } from '@angular/router';
 })
 export class RegisterComponent {
   user = { name: '', email: '', password: '' };
+  errorMessage = '';
+  isLoading = false;
+
+  constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit(form: any) {
     if (form.valid) {
-      console.log('Registrar cuenta', this.user);
+      this.isLoading = true;
+      this.errorMessage = '';
+      
+      this.authService.register(this.user).subscribe({
+        next: (response) => {
+          this.isLoading = false;
+          alert('¡Cuenta creada con éxito! Ahora puedes ingresar.');
+          this.router.navigate(['/login']);
+        },
+        error: (error) => {
+          console.error('Error en registro', error);
+          this.errorMessage = 'El correo ya existe o hubo un error en el servidor.';
+          this.isLoading = false;
+        }
+      });
     }
   }
 }
