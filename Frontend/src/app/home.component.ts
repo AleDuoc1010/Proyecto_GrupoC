@@ -17,7 +17,7 @@ import { RouterLink } from '@angular/router';
               </div>
               <div class="col-12 col-lg-7 p-5">
                 <div class="text-center mb-4">
-                  <h1 class="fw-bold" style="color: var(--pet-brown);">Huellas a Casa 🐾</h1>
+                  <h1 class="fw-bold" style="color: var(--pet-brown);">Sanos y Salvos 🐾</h1>
                   <p class="text-muted">Reconectando mascotas con sus familias</p>
                 </div>
 
