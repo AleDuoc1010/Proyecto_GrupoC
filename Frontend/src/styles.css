@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --pet-beige: #f5f5dc;
+  --pet-brown: #6f4e37;
+  --pet-dark-brown: #3d2b1f;
+  --pet-white: #ffffff;
+}
+
+body {
+  background-color: var(--pet-beige) !important;
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+}
+
+/* Contenedor principal para centrar todo */
+.main-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* El recuadro blanco (Glassmorphism) */
+.glass-card {
+  background: white !important;
+  border-radius: 30px !important;
+  box-shadow: 0 15px 35px rgba(111, 78, 55, 0.2) !important;
+  border: none !important;
+  overflow: hidden;
+}
+
+/* Botón café innovador */
+.btn-pet {
+  background-color: var(--pet-brown) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 50px !important;
+  padding: 12px 20px !important;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-pet:hover {
+  background-color: var(--pet-dark-brown) !important;
+  transform: scale(1.02);
+}
