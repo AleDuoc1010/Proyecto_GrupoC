@@ -8,10 +8,10 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [CommonModule, FormsModule, RouterLink],
   template: `
-    <div class="main-wrapper">
+    <div class="main-wrapper animated-bg">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-12 col-md-8 col-lg-6 glass-card shadow-lg bg-white p-4">
+          <div class="col-12 col-md-8 col-lg-6 glass-card shadow-lg bg-white p-4 fade-in">
             <div class="text-center mb-4">
               <h2 class="fw-bold" style="color: var(--pet-brown);">Ingresar</h2>
               <p class="text-muted">Accede a tu cuenta para gestionar reportes y mascotas encontradas.</p>
@@ -34,7 +34,23 @@ import { RouterLink } from '@angular/router';
         </div>
       </div>
     </div>
-  `
+  `,
+  styles: [`
+    .animated-bg {
+      animation: bgPulse 4s ease-in-out infinite;
+    }
+    @keyframes bgPulse {
+      0%, 100% { background-color: #faf0e6; }
+      50% { background-color: #f5f5dc; }
+    }
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  `]
 })
 export class LoginComponent {
   credentials = { email: '', password: '' };

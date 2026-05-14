@@ -8,10 +8,10 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [CommonModule, FormsModule, RouterLink],
   template: `
-    <div class="main-wrapper">
+    <div class="main-wrapper animated-bg-gradient">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-12 col-md-8 col-lg-6 glass-card shadow-lg bg-white p-4">
+          <div class="col-12 col-md-8 col-lg-6 glass-card shadow-lg bg-white p-4 fade-in-scale">
             <div class="text-center mb-4">
               <h2 class="fw-bold" style="color: var(--pet-brown);">Registrarme</h2>
               <p class="text-muted">Crea tu cuenta para reportar mascotas y recibir alertas.</p>
@@ -38,7 +38,26 @@ import { RouterLink } from '@angular/router';
         </div>
       </div>
     </div>
-  `
+  `,
+  styles: [`
+    .animated-bg-gradient {
+      background: linear-gradient(90deg, #faf0e6, #f5f5dc, #faf0e6);
+      background-size: 200% 200%;
+      animation: gradientMove 5s ease infinite;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .fade-in-scale {
+      animation: scaleIn 1s ease-out;
+    }
+    @keyframes scaleIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  `]
 })
 export class RegisterComponent {
   user = { name: '', email: '', password: '' };
